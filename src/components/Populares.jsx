@@ -36,7 +36,7 @@ const Populares = () => {
             <h3 className='text-center text-3xl font-bold py-4 text-gray-300'>Peliculas</h3>
 
             {/* Contenedor peliculas */}
-            <div className='container mx-auto flex flex-wrap items-center justify-around mb-14'>
+            <div className='container mx-auto flex flex-wrap items-center justify-around pb-14'>
 
                 {
                     popularMovies?.map(movie => {

@@ -30,3 +30,7 @@
   width: 253px;
   height: 380px;
 }
+
+.scroll-to-top {
+  bottom: 60px !important;
+}
