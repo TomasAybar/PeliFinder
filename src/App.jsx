@@ -12,17 +12,22 @@ import { Route, Routes } from 'react-router-dom'
 function App() {
 
   return (
-    <>
+    <div style={{
+      backgroundColor: '#1f1f1f'
+    }}>
+
       <Navbar />
 
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/movie/:id' element={<Details />}/>
+        <Route path='/movie/:id' element={<Details />} />
       </Routes>
-      
+
+      {/* <Navbar /> */}
+
       {/* <Hero /> */}
       {/* <Populares /> */}
-    </>
+    </div>
   )
 }
 

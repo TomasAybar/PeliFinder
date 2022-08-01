@@ -12,6 +12,7 @@ const Populares = () => {
     const [popularMovies, setPopularMovies] = useState([]) // traigo mis peliculas
     const [page, setPage] = useState(1)
 
+    // llama a las populares
     useEffect(() => {
 
         dispatch(moviesActions.getPopularMovies(page))
@@ -20,19 +21,19 @@ const Populares = () => {
     }, [page])
 
 
+    // cambia el el hook del paginador
     const changePage = (value) => {
 
         value === 'next'
             ? page < 1000 && setPage(page + 1)
             : page > 1 && setPage(page - 1)
 
-        // console.log(page)
     }
 
     return (
 
         <div>
-            <h3 className='text-center text-3xl font-bold py-4'>Peliculas</h3>
+            <h3 className='text-center text-3xl font-bold py-4 text-gray-300'>Peliculas</h3>
 
             {/* Contenedor peliculas */}
             <div className='container mx-auto flex flex-wrap items-center justify-around mb-14'>
@@ -42,9 +43,9 @@ const Populares = () => {
                         return (
                             <LinkRouter
                                 to={`/movie/${movie.id}`}
+                                key={movie.id}
                             >
                                 <div
-                                    key={movie.id}
                                     className='card-movie m-4 cursor-pointer shadow-md'
                                 >
 

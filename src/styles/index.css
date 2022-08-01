@@ -8,6 +8,10 @@
   box-sizing: border-box;
 }
 
+#root {
+  background-color: #1f1f1f;
+}
+
 .navbar {
   height: 15vh;
   background: rgb(0, 0, 0);
@@ -20,4 +24,9 @@
 .poster {
   width: 320px;
   height: 480px;
+}
+
+.poster-similar {
+  width: 253px;
+  height: 380px;
 }
