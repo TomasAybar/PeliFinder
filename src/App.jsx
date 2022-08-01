@@ -2,6 +2,7 @@ import './styles/index.css'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import Details from './pages/Details'
+import ScrollTop from './components/ScrollTop'
 
 import Hero from './components/Hero'
 import Populares from './components/Populares'
@@ -17,6 +18,7 @@ function App() {
     }}>
 
       <Navbar />
+      <ScrollTop />
 
       <Routes>
         <Route path='/' element={<Home />} />
