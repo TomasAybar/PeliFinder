@@ -7,16 +7,16 @@ const Navbar = () => {
         <div className='navbar'>
 
             {/* logo */}
-            <LinkRouter to={'/'}>
+            <LinkRouter to={'/'} className='pt-3'>
                 <img src={logo} alt="logo" />
             </LinkRouter>
 
             {/* navegacion */}
-            <div className='container mx-auto flex items-center justify-evenly text-xl text-white'>
+            {/* <div className='container mx-auto flex items-center justify-evenly text-xl text-white'>
                 <p>Series</p>
                 <p>Peliculas</p>
                 <p>Mi lista</p>
-            </div>
+            </div> */}
         </div>
     )
 }

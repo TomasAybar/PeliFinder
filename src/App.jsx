@@ -1,8 +1,10 @@
 import './styles/index.css'
-import Hero from './components/Hero'
 import Navbar from './components/Navbar'
-import Populares from './components/Populares'
+import Home from './pages/Home'
 import Details from './pages/Details'
+
+import Hero from './components/Hero'
+import Populares from './components/Populares'
 
 // router dom
 import { Route, Routes } from 'react-router-dom'
@@ -14,9 +16,10 @@ function App() {
       <Navbar />
 
       <Routes>
+        <Route path='/' element={<Home />} />
         <Route path='/movie/:id' element={<Details />}/>
-        <Route path='/' element={<Populares />} />
       </Routes>
+      
       {/* <Hero /> */}
       {/* <Populares /> */}
     </>

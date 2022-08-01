@@ -10,13 +10,24 @@ const Populares = () => {
     const dispatch = useDispatch();
 
     const [popularMovies, setPopularMovies] = useState([]) // traigo mis peliculas
+    const [page, setPage] = useState(1)
 
     useEffect(() => {
 
-        dispatch(moviesActions.getPopularMovies())
+        dispatch(moviesActions.getPopularMovies(page))
             .then(res => setPopularMovies(res.data.results))
 
-    }, [])
+    }, [page])
+
+
+    const changePage = (value) => {
+
+        value === 'next'
+            ? page < 1000 && setPage(page + 1)
+            : page > 1 && setPage(page - 1)
+
+        // console.log(page)
+    }
 
     return (
 
@@ -24,7 +35,7 @@ const Populares = () => {
             <h3 className='text-center text-3xl font-bold py-4'>Peliculas</h3>
 
             {/* Contenedor peliculas */}
-            <div className='container mx-auto flex flex-wrap items-center justify-around'>
+            <div className='container mx-auto flex flex-wrap items-center justify-around mb-14'>
 
                 {
                     popularMovies?.map(movie => {
@@ -47,6 +58,31 @@ const Populares = () => {
                         )
                     })
                 }
+
+            </div>
+
+            {/* Paginador */}
+            <div
+                className='flex items-center justify-evenly bg-purple-500 text-white font-bold fixed bottom-0 w-full'
+
+            >
+                <button
+                    className='text-4xl hover:text-yellow-300'
+                    onClick={(e) => changePage(e.target.value)}
+                    value='back'
+                >
+                    ⬅
+                </button>
+
+                <p>Pagina {page}</p>
+
+                <button
+                    className='text-4xl hover:text-yellow-300'
+                    onClick={(e) => changePage(e.target.value)}
+                    value='next'
+                >
+                    ➡
+                </button>
 
             </div>
 
