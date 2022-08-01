@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import moviesActions from '../redux/actions/moviesActions'
-
+import { Link as LinkRouter } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { useState, useEffect } from 'react'
 
 const URLIMG = 'https://image.tmdb.org/t/p/w500'
 
@@ -12,7 +11,6 @@ const Populares = () => {
 
     const [popularMovies, setPopularMovies] = useState([]) // traigo mis peliculas
 
-
     useEffect(() => {
 
         dispatch(moviesActions.getPopularMovies())
@@ -20,11 +18,7 @@ const Populares = () => {
 
     }, [])
 
-
-
-    console.log(popularMovies)
     return (
-
 
         <div>
             <h3 className='text-center text-3xl font-bold py-4'>Peliculas</h3>
@@ -35,18 +29,24 @@ const Populares = () => {
                 {
                     popularMovies?.map(movie => {
                         return (
-                            <div key={movie.id} className='card-movie m-4 cursor-pointer shadow-md'>
+                            <LinkRouter
+                                to={`/movie/${movie.id}`}
+                            >
+                                <div
+                                    key={movie.id}
+                                    className='card-movie m-4 cursor-pointer shadow-md'
+                                >
 
-                                <img
-                                    src={URLIMG + movie.poster_path}
-                                    alt={movie.title}
-                                    className='poster'
-                                />
-                            </div>
+                                    <img
+                                        src={URLIMG + movie.poster_path}
+                                        alt={movie.title}
+                                        className='poster'
+                                    />
+                                </div>
+                            </LinkRouter>
                         )
                     })
                 }
-
 
             </div>
 

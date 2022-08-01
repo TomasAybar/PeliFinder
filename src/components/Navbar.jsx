@@ -1,16 +1,15 @@
 import React from 'react'
 import logo from '../assets/img/icons/logo.png'
+import { Link as LinkRouter } from 'react-router-dom'
 
 const Navbar = () => {
     return (
         <div className='navbar'>
+
             {/* logo */}
-            <div>
-
+            <LinkRouter to={'/'}>
                 <img src={logo} alt="logo" />
-
-
-            </div>
+            </LinkRouter>
 
             {/* navegacion */}
             <div className='container mx-auto flex items-center justify-evenly text-xl text-white'>

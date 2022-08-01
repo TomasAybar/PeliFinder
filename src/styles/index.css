@@ -8,11 +8,6 @@
   box-sizing: border-box;
 }
 
-#root {
-  /* background-color: #000; */
-  /* color: #fff; */
-}
-
 .navbar {
   height: 15vh;
   background: rgb(0, 0, 0);
@@ -23,11 +18,3 @@
   width: 320px;
   height: 480px;
 }
-
-/* .card-movie {
-  cursor: pointer;
-} */
-
-.card-movie:hover {
-  background-color: rgba(0, 0, 0, 0.165);
-} 
