@@ -5,7 +5,7 @@ import Filtros from '../components/Filtros'
 const Home = () => {
   return (
     <>
-    <Filtros />
+    {/* <Filtros /> */}
     <Populares />
     </>
   )

@@ -11,6 +11,7 @@ const Populares = () => {
 
     const [popularMovies, setPopularMovies] = useState([]) // traigo mis peliculas
     const [page, setPage] = useState(1)
+    const [search, setSearch] = useState('')
 
     // llama a las populares
     useEffect(() => {
@@ -30,64 +31,95 @@ const Populares = () => {
 
     }
 
+    const handleSearch = async () => {
+
+        if (search !== '') {
+
+            const res = await dispatch(moviesActions.getSearchMovie(search))
+
+            setPopularMovies(res.data.results)
+        } else {
+            console.log('campos vacios')
+        }
+
+
+
+    }
+
+
+
     return (
+        <>
+            {/* search */}
+            <div className='text-center'>
+                <input
+                    className='py-2 text-center border'
+                    placeholder='Pelicula que desea buscar..'
+                    type='text'
+                    onKeyUp={(e) => setSearch(e.target.value)}
+                // onChange={}
+                />
+                <button className='text-3xl ml-3' onClick={handleSearch}>🍔</button>
+            </div>
 
-        <div>
-            <h3 className='text-center text-3xl font-bold py-4 text-gray-300'>Peliculas</h3>
+            {/* contenedor peliculas */}
+            <div>
+                <h3 className='text-center text-3xl font-bold py-4 text-gray-300'>Peliculas</h3>
 
-            {/* Contenedor peliculas */}
-            <div className='container mx-auto flex flex-wrap items-center justify-around pb-14'>
+                {/* Contenedor peliculas */}
+                <div className='container mx-auto flex flex-wrap items-center justify-around pb-14'>
 
-                {
-                    popularMovies?.map(movie => {
-                        return (
-                            <LinkRouter
-                                to={`/movie/${movie.id}`}
-                                key={movie.id}
-                            >
-                                <div
-                                    className='card-movie m-4 cursor-pointer shadow-md'
+                    {
+                        popularMovies?.map(movie => {
+                            return (
+                                <LinkRouter
+                                    to={`/movie/${movie.id}`}
+                                    key={movie.id}
                                 >
+                                    <div
+                                        className='card-movie m-4 cursor-pointer shadow-md'
+                                    >
 
-                                    <img
-                                        src={URLIMG + movie.poster_path}
-                                        alt={movie.title}
-                                        className='poster'
-                                    />
-                                </div>
-                            </LinkRouter>
-                        )
-                    })
-                }
+                                        <img
+                                            src={URLIMG + movie.poster_path}
+                                            alt={movie.title}
+                                            className='poster'
+                                        />
+                                    </div>
+                                </LinkRouter>
+                            )
+                        })
+                    }
+
+                </div>
+
+                {/* Paginador */}
+                <div
+                    className='flex items-center justify-evenly bg-purple-500 text-white font-bold fixed bottom-0 w-full'
+
+                >
+                    <button
+                        className='text-4xl hover:text-yellow-300'
+                        onClick={(e) => changePage(e.target.value)}
+                        value='back'
+                    >
+                        ⬅
+                    </button>
+
+                    <p>Pagina {page}</p>
+
+                    <button
+                        className='text-4xl hover:text-yellow-300'
+                        onClick={(e) => changePage(e.target.value)}
+                        value='next'
+                    >
+                        ➡
+                    </button>
+
+                </div>
 
             </div>
-
-            {/* Paginador */}
-            <div
-                className='flex items-center justify-evenly bg-purple-500 text-white font-bold fixed bottom-0 w-full'
-
-            >
-                <button
-                    className='text-4xl hover:text-yellow-300'
-                    onClick={(e) => changePage(e.target.value)}
-                    value='back'
-                >
-                    ⬅
-                </button>
-
-                <p>Pagina {page}</p>
-
-                <button
-                    className='text-4xl hover:text-yellow-300'
-                    onClick={(e) => changePage(e.target.value)}
-                    value='next'
-                >
-                    ➡
-                </button>
-
-            </div>
-
-        </div>
+        </>
     )
 }
 

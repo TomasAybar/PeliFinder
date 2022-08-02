@@ -36,6 +36,16 @@ const moviesActions = {
         }
     },
 
+    getSearchMovie: (text) => {
+
+        return async (dispatch, getState) => {
+
+            const res = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=da105d94ec008192c58e8fcad8b05171&language=es-MX&query=${text}`)
+            return res
+
+        }
+    },
+
 }
 
 export default moviesActions;
