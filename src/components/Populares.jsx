@@ -9,9 +9,10 @@ const Populares = () => {
 
     const dispatch = useDispatch();
 
-    const [popularMovies, setPopularMovies] = useState([]) // traigo mis peliculas
+    const [popularMovies, setPopularMovies] = useState() // traigo mis peliculas
     const [page, setPage] = useState(1)
     const [search, setSearch] = useState('')
+    const [reload, setReload] = useState(false)
 
     // llama a las populares
     useEffect(() => {
@@ -19,7 +20,7 @@ const Populares = () => {
         dispatch(moviesActions.getPopularMovies(page))
             .then(res => setPopularMovies(res.data.results))
 
-    }, [page])
+    }, [reload, page])
 
 
     // cambia el el hook del paginador
@@ -31,40 +32,61 @@ const Populares = () => {
 
     }
 
-    const handleSearch = async () => {
+    // tomar valor del input
+    // const handleSearch = async () => {
 
-        if (search !== '') {
+    //     if (search.trim() !== '') {
+    //         const res = await dispatch(moviesActions.getSearchMovie(search))
+    //         setPopularMovies(res.data.results)
+    //     } else {
+    //         console.log('campos vacios')
+    //         setReload(!false)
 
-            const res = await dispatch(moviesActions.getSearchMovie(search))
+    //     }
+
+    // }
+
+    const searching = async (value) => {
+
+        // console.log(value)
+
+        if (value !== '' && value.length > 0) {
+
+            const res = await dispatch(moviesActions.getSearchMovie(value))
 
             setPopularMovies(res.data.results)
+
+
         } else {
-            console.log('campos vacios')
+
+            // console.log('todavia no..')
+
+            setReload(!reload)
+
         }
-
-
-
     }
-
-
 
     return (
         <>
             {/* search */}
             <div className='text-center'>
+
+                {/* <button className='text-3xl ml-3' onClick={deleteSearch}>🚫</button> */}
+
                 <input
-                    className='py-2 text-center border'
+                    className='py-2 text-center border mx-5'
                     placeholder='Pelicula que desea buscar..'
                     type='text'
-                    onKeyUp={(e) => setSearch(e.target.value)}
-                // onChange={}
+                    // value={search}
+                    onChange={(e) => searching(e.target.value)}
                 />
-                <button className='text-3xl ml-3' onClick={handleSearch}>🍔</button>
+
+                {/* <button className='text-3xl' onClick={handleSearch}>🍿</button> */}
             </div>
 
             {/* contenedor peliculas */}
             <div>
-                <h3 className='text-center text-3xl font-bold py-4 text-gray-300'>Peliculas</h3>
+                <h3 className='text-center text-3xl font-bold py-4 text-gray-300'>Peliculas Populares</h3>
 
                 {/* Contenedor peliculas */}
                 <div className='container mx-auto flex flex-wrap items-center justify-around pb-14'>
