@@ -8,13 +8,13 @@ import { Link as LinkRouter } from 'react-router-dom'
 const URLIMG = 'https://image.tmdb.org/t/p/w500'
 
 const Details = () => {
+
     const dispatch = useDispatch();
 
     const [movie, setMovie] = useState() // traigo mi pelicula
-    const [similar, setSimilar] = useState() // traigo mi pelicula
+    const [similar, setSimilar] = useState() // traigo peliculas similares
 
     const { id } = useParams(); // id 
-
 
 
     useEffect(() => {
@@ -28,10 +28,6 @@ const Details = () => {
     }, [id])
 
     // console.log(similar)
-
-
-
-
 
     return (
         <div className='py-10'>
@@ -73,33 +69,8 @@ const Details = () => {
                                 </LinkRouter>
                             )
                         })
-                    }
-                    {/* <div>
-                        <img
-                            src={URLIMG + similar[0]?.poster_path}
-                            alt={similar[0]?.title}
-                            className='poster-similar'
-                        />
-                    </div> */}
-
-                    {/* <div>
-                        <img
-                            src={URLIMG + similar[1]?.poster_path}
-                            alt={similar[1]?.title}
-                            className='poster-similar'
-                        />
-                    </div>
-
-                    <div>
-                        <img
-                            src={URLIMG + similar[2]?.poster_path}
-                            alt={similar[2]?.title}
-                            className='poster-similar'
-                        />
-                    </div> */}
+                    }                                       
                 </div>
-
-
             </div>
         </div>
     )

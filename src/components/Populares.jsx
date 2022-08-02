@@ -9,9 +9,9 @@ const Populares = () => {
 
     const dispatch = useDispatch();
 
+    // HOOKS
     const [popularMovies, setPopularMovies] = useState() // traigo mis peliculas
     const [page, setPage] = useState(1)
-    const [search, setSearch] = useState('')
     const [reload, setReload] = useState(false)
 
     // llama a las populares
@@ -32,23 +32,8 @@ const Populares = () => {
 
     }
 
-    // tomar valor del input
-    // const handleSearch = async () => {
-
-    //     if (search.trim() !== '') {
-    //         const res = await dispatch(moviesActions.getSearchMovie(search))
-    //         setPopularMovies(res.data.results)
-    //     } else {
-    //         console.log('campos vacios')
-    //         setReload(!false)
-
-    //     }
-
-    // }
-
+    // ejecuta la busqueda del input
     const searching = async (value) => {
-
-        // console.log(value)
 
         if (value !== '' && value.length > 0) {
 
@@ -56,11 +41,9 @@ const Populares = () => {
 
             setPopularMovies(res.data.results)
 
-
         } else {
 
             // console.log('todavia no..')
-
             setReload(!reload)
 
         }
@@ -71,17 +54,13 @@ const Populares = () => {
             {/* search */}
             <div className='text-center'>
 
-                {/* <button className='text-3xl ml-3' onClick={deleteSearch}>🚫</button> */}
-
                 <input
                     className='py-2 text-center border mx-5'
                     placeholder='Pelicula que desea buscar..'
                     type='text'
-                    // value={search}
                     onChange={(e) => searching(e.target.value)}
                 />
 
-                {/* <button className='text-3xl' onClick={handleSearch}>🍿</button> */}
             </div>
 
             {/* contenedor peliculas */}
