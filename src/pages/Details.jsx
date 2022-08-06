@@ -27,10 +27,10 @@ const Details = () => {
 
     }, [id])
 
-    // console.log(similar)
+    console.log(similar)
 
     return (
-        <div className='py-10'>
+        <div className='py-10 contenedor-detail-movie'>
             {/* pelicula principal */}
             <div className='text-center flex items-center justify-center flex-col container mx-auto mb-14'>
 
@@ -41,37 +41,44 @@ const Details = () => {
                         alt={movie?.title}
                         className='poster mb-5'
                     />
-                    <p className='text-gray-300 text-xl w-1/2'>{movie?.overview}</p>
+                    <p className='text-gray-300 text-base md:text-xl w-full px-3 md:px-0 md:w-1/2'>{movie?.overview}</p>
                 </div>
 
             </div>
 
-            {/* peliculas similares */}
-            <div className='text-center container mx-auto'>
-                <h2 className='text-3xl text-gray-300 mb-4'>Peliculas similares</h2>
+            {
+                similar?.length !== 0
+                    ? <div className='text-center container mx-auto'>
+                        <h2 className='text-3xl text-gray-300 mb-4'>Peliculas similares</h2>
 
-                <div className='flex items-center justify-center flex-wrap gap-5'>
+                        {/* Contenedor peliculas similares */}
+                        <div className='flex items-center justify-center flex-wrap gap-5'>
 
-                    {
-                        similar?.map(movie => {
-                            return (
-                                <LinkRouter
-                                    to={`/movie/${movie.id}`}
-                                    key={movie.id}
-                                >
-                                    <div>
-                                        <img
-                                            src={URLIMG + movie.poster_path}
-                                            alt={movie.title}
-                                            className='poster-similar'
-                                        />
-                                    </div>
-                                </LinkRouter>
-                            )
-                        })
-                    }                                       
-                </div>
-            </div>
+                            {
+                                similar?.map(movie => {
+                                    return (
+                                        <LinkRouter
+                                            to={`/movie/${movie.id}`}
+                                            key={movie.id}
+                                        >
+                                            <div>
+                                                <img
+                                                    src={URLIMG + movie.poster_path}
+                                                    alt={movie.title}
+                                                    className='poster-similar'
+                                                />
+                                            </div>
+                                        </LinkRouter>
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
+                    : <p className='text-white text-xl text-center'>Lamentablemente, no se encontraron peliculas similares</p>
+                    
+            }
+            
+            
         </div>
     )
 }

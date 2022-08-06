@@ -8,9 +8,7 @@
   box-sizing: border-box;
 }
 
-#root {
-  background-color: #1f1f1f;
-}
+#root { background-color: #1f1f1f; }
 
 .navbar {
   height: 15vh;
@@ -21,16 +19,8 @@
   justify-content: center;
 }
 
-.poster {
-  width: 320px;
-  height: 480px;
-}
-
-.poster-similar {
-  width: 253px;
-  height: 380px;
-}
-
-.scroll-to-top {
-  bottom: 60px !important;
-}
+.poster { width: 320px; height: 480px; }
+.poster-similar { width: 253px; height: 380px; }
+.scroll-to-top { bottom: 60px !important; }
+.contenedor-peliculas { min-height: 70vh; }
+.contenedor-detail-movie { min-height: 85vh;}

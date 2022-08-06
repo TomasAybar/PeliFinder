@@ -36,10 +36,17 @@ const Populares = () => {
     const searching = async (value) => {
 
         if (value !== '' && value.length > 0) {
-
+            
             const res = await dispatch(moviesActions.getSearchMovie(value))
 
+            // res.data.results.length !== 0 
+            //     ? 
+            //     : console.log('sin resultados')
+            
+            
             setPopularMovies(res.data.results)
+            console.log(res.data.results.length)
+            
 
         } else {
 
@@ -68,28 +75,31 @@ const Populares = () => {
                 <h3 className='text-center text-3xl font-bold py-4 text-gray-300'>Peliculas Populares</h3>
 
                 {/* Contenedor peliculas */}
-                <div className='container mx-auto flex flex-wrap items-center justify-around pb-14'>
+                <div className='contenedor-peliculas container mx-auto flex flex-wrap items-center justify-around pb-14'>
 
-                    {
-                        popularMovies?.map(movie => {
-                            return (
-                                <LinkRouter
-                                    to={`/movie/${movie.id}`}
-                                    key={movie.id}
-                                >
-                                    <div
-                                        className='card-movie m-4 cursor-pointer shadow-md'
+                    {   
+                        popularMovies?.length !== 0
+                            ? popularMovies?.map(movie => {
+                                return (
+                                    <LinkRouter
+                                        to={`/movie/${movie.id}`}
+                                        key={movie.id}
                                     >
+                                        <div
+                                            className='card-movie m-4 cursor-pointer shadow-md'
+                                        >
 
-                                        <img
-                                            src={URLIMG + movie.poster_path}
-                                            alt={movie.title}
-                                            className='poster'
-                                        />
-                                    </div>
-                                </LinkRouter>
-                            )
-                        })
+                                            <img
+                                                src={URLIMG + movie.poster_path}
+                                                alt={movie.title}
+                                                className='poster'
+                                            />
+                                        </div>
+                                    </LinkRouter>
+                                )
+                            })
+                            : <p className='text-white text-xl text-center'>Lamentablemente, no se encontraron resultados para su búsqueda</p>
+                        
                     }
 
                 </div>
