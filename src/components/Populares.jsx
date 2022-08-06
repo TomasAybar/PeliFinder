@@ -36,23 +36,13 @@ const Populares = () => {
     const searching = async (value) => {
 
         if (value !== '' && value.length > 0) {
-            
-            const res = await dispatch(moviesActions.getSearchMovie(value))
 
-            // res.data.results.length !== 0 
-            //     ? 
-            //     : console.log('sin resultados')
-            
-            
+            const res = await dispatch(moviesActions.getSearchMovie(value))
             setPopularMovies(res.data.results)
-            console.log(res.data.results.length)
-            
 
         } else {
 
-            // console.log('todavia no..')
             setReload(!reload)
-
         }
     }
 
@@ -77,7 +67,7 @@ const Populares = () => {
                 {/* Contenedor peliculas */}
                 <div className='contenedor-peliculas container mx-auto flex flex-wrap items-center justify-around pb-14'>
 
-                    {   
+                    {
                         popularMovies?.length !== 0
                             ? popularMovies?.map(movie => {
                                 return (
@@ -99,7 +89,7 @@ const Populares = () => {
                                 )
                             })
                             : <p className='text-white text-xl text-center'>Lamentablemente, no se encontraron resultados para su búsqueda</p>
-                        
+
                     }
 
                 </div>

@@ -27,7 +27,7 @@ const Details = () => {
 
     }, [id])
 
-    console.log(similar)
+    // console.log(movie)
 
     return (
         <div className='py-10 contenedor-detail-movie'>
