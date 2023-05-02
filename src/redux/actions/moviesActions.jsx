@@ -1,6 +1,4 @@
-import axios from 'axios';
-
-const URL = 'https://api.themoviedb.org/3/movie/popular?api_key=da105d94ec008192c58e8fcad8b05171&language=es-MX'
+import { movieDB } from '../../api/movieDB';
 
 
 const moviesActions = {
@@ -9,7 +7,8 @@ const moviesActions = {
 
         return async (dispatch, getState) => {
 
-            const res = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=da105d94ec008192c58e8fcad8b05171&language=es-MX&page=${page}`)
+            const res = await movieDB.get(`/movie/popular?page=${page}`)
+
             return res
 
         }
@@ -19,7 +18,8 @@ const moviesActions = {
 
         return async (dispatch, getState) => {
 
-            const res = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=da105d94ec008192c58e8fcad8b05171&language=es-MX`)
+            const res = await movieDB.get(`/movie/${id}`)
+
             return res
 
         }
@@ -29,7 +29,8 @@ const moviesActions = {
 
         return async (dispatch, getState) => {
 
-            const res = await axios.get(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=da105d94ec008192c58e8fcad8b05171&language=es-MX`)
+            const res = await movieDB.get(`/movie/${id}/similar`)
+
             return res
 
         }
@@ -39,7 +40,8 @@ const moviesActions = {
 
         return async (dispatch, getState) => {
 
-            const res = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=da105d94ec008192c58e8fcad8b05171&language=es-MX&query=${text}`)
+            const res = await movieDB.get(`/search/movie?query=${text}`)
+
             return res
 
         }

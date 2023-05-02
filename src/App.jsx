@@ -5,9 +5,6 @@ import Details from './pages/Details'
 import ScrollTop from './components/ScrollTop' // empieza siempre arriba
 import BotonScrollToTop from 'react-scroll-to-top'
 
-import Hero from './components/Hero'
-import Populares from './components/Populares'
-
 // router dom
 import { Route, Routes } from 'react-router-dom'
 
@@ -19,14 +16,14 @@ function App() {
     }}>
 
       <Navbar />
-      <ScrollTop /> 
+      <ScrollTop />
 
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/movie/:id' element={<Details />} />
       </Routes>
 
-      <BotonScrollToTop 
+      <BotonScrollToTop
         smooth
         style={{
           borderRadius: '50%',
