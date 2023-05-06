@@ -1,4 +1,4 @@
-import { movieDB } from '../../api/movieDB';
+import { movieDB, watchTV } from '../../api/movieDB';
 
 
 const moviesActions = {
@@ -46,6 +46,16 @@ const moviesActions = {
 
         }
     },
+
+    getWatchTV: (title) => {
+        return async (dispatch, getState) => {
+
+            const res = await watchTV.get(`/search?title=${title}`)
+
+            return res
+
+        }
+    }
 
 }
 
