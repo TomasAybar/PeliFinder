@@ -9,5 +9,5 @@ export const movieDB = axios.create({
 });
 
 export const watchTV = axios.create({
-    baseURL: 'http://localhost:3000/api/'
+    baseURL: import.meta.env.VITE_API_URI_BACK
 })
