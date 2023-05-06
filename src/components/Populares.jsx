@@ -16,7 +16,7 @@ const Populares = () => {
             <div className='text-center'>
 
                 <input
-                    className='py-2 text-center border mx-5'
+                    className='w-3/4 md:w-1/2   rounded-sm py-2 px-2 text-center border mx-5'
                     placeholder='Pelicula que desea buscar..'
                     type='text'
                     onChange={(e) => searching(e.target.value)}
