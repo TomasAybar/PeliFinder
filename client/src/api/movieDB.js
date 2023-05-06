@@ -7,3 +7,7 @@ export const movieDB = axios.create({
         language: "es-MX",
     },
 });
+
+export const watchTV = axios.create({
+    baseURL: 'http://localhost:3000/api/'
+})
