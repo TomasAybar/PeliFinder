@@ -1,50 +1,14 @@
-import React, { useState, useEffect } from 'react'
-import moviesActions from '../redux/actions/moviesActions'
 import { Link as LinkRouter } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { usePopulares } from '../hooks/usePopulares';
+
 
 const URLIMG = 'https://image.tmdb.org/t/p/w500'
 
 const Populares = () => {
 
-    const dispatch = useDispatch();
-
-    // HOOKS
-    const [popularMovies, setPopularMovies] = useState() // traigo mis peliculas
-    const [page, setPage] = useState(1)
-    const [reload, setReload] = useState(false)
-
-    // llama a las populares
-    useEffect(() => {
-
-        dispatch(moviesActions.getPopularMovies(page))
-            .then(res => setPopularMovies(res.data.results))
-
-    }, [reload, page])
-
-
-    // cambia el el hook del paginador
-    const changePage = (value) => {
-
-        value === 'next'
-            ? page < 1000 && setPage(page + 1)
-            : page > 1 && setPage(page - 1)
-
-    }
-
-    // ejecuta la busqueda del input
-    const searching = async (value) => {
-
-        if (value !== '' && value.length > 0) {
-
-            const res = await dispatch(moviesActions.getSearchMovie(value))
-            setPopularMovies(res.data.results)
-
-        } else {
-
-            setReload(!reload)
-        }
-    }
+    const { backPage, nextPage, searching, popularMovies, page } = usePopulares()
 
     return (
         <>
@@ -96,27 +60,18 @@ const Populares = () => {
 
                 {/* Paginador */}
                 <div
-                    className='flex items-center justify-evenly bg-purple-500 text-white font-bold fixed bottom-0 w-full'
+                    className='flex items-center justify-evenly bg-purple-500 text-white font-bold fixed bottom-0 w-full h-[5vh]'
 
                 >
-                    <button
-                        className='text-4xl hover:text-yellow-300'
-                        onClick={(e) => changePage(e.target.value)}
-                        value='back'
-                    >
-                        ⬅
-                    </button>
+                    <ArrowBackIcon
+                        className='hover:text-yellow-300 cursor-pointer'
+                        onClick={backPage} />
 
                     <p>Pagina {page}</p>
 
-                    <button
-                        className='text-4xl hover:text-yellow-300'
-                        onClick={(e) => changePage(e.target.value)}
-                        value='next'
-                    >
-                        ➡
-                    </button>
-
+                    <ArrowForwardIcon
+                        className='hover:text-yellow-300 cursor-pointer'
+                        onClick={nextPage} />
                 </div>
 
             </div>

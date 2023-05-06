@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Details from './pages/Details'
 import ScrollTop from './components/ScrollTop' // empieza siempre arriba
 import BotonScrollToTop from 'react-scroll-to-top'
+import ArrowUpwardOutlinedIcon from "@mui/icons-material/ArrowUpwardOutlined";
 
 // router dom
 import { Route, Routes } from 'react-router-dom'
@@ -33,12 +34,7 @@ function App() {
           paddingBottom: '20'
         }}
 
-        component={
-          <p style={{
-            fontSize: '1.5rem',
-            color: '#ffffff',
-            fontWeight: '600'
-          }}>⬆</p>}
+        component={<ArrowUpwardOutlinedIcon sx={{ color: '#fff', fontWeight: 600, fontSize: 30 }} />}
       />
 
     </div>
