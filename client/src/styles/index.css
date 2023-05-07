@@ -35,11 +35,3 @@
 .scroll-to-top {
   bottom: 60px !important;
 }
-
-.contenedor-peliculas {
-  min-height: 70vh;
-}
-
-.contenedor-detail-movie {
-  min-height: 85vh;
-}

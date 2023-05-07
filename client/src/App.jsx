@@ -21,7 +21,7 @@ function App() {
 
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/movie/:id' element={<Details />} />
+        <Route path='/movie/:id/:name' element={<Details />} />
       </Routes>
 
       <BotonScrollToTop

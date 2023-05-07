@@ -29,14 +29,14 @@ const Populares = () => {
                 <h3 className='text-center text-3xl font-bold py-4 text-gray-300'>Peliculas Populares</h3>
 
                 {/* Contenedor peliculas */}
-                <div className='contenedor-peliculas container mx-auto flex flex-wrap items-center justify-around pb-14'>
+                <div className='min-h-[70vh] container mx-auto flex flex-wrap items-center justify-around pb-14'>
 
                     {
                         popularMovies?.length !== 0
                             ? popularMovies?.map(movie => {
                                 return (
                                     <LinkRouter
-                                        to={`/movie/${movie.id}`}
+                                        to={`/movie/${movie.id}/${movie.title}`}
                                         key={movie.id}
                                     >
                                         <div
